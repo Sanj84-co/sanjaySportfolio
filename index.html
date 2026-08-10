@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanjay Senthilkumar</title>
+<meta name="description" content="Sanjay Senthilkumar — backend and AI systems engineer. Case-file postmortems on production RAG, LLM, and API projects: Vision-RAG QA, StockSee, and Exoplanet Explorer.">
+<link rel="canonical" href="https://sanj84-co.github.io/sanjaySportfolio/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sanjay Senthilkumar — Backend / AI Systems Engineer">
+<meta property="og:description" content="Case-file postmortems on production RAG, LLM, and API projects: Vision-RAG QA, StockSee, and Exoplanet Explorer.">
+<meta property="og:url" content="https://sanj84-co.github.io/sanjaySportfolio/">
+<meta property="og:image" content="https://sanj84-co.github.io/sanjaySportfolio/images/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sanjay Senthilkumar — Backend / AI Systems Engineer">
+<meta name="twitter:description" content="Case-file postmortems on production RAG, LLM, and API projects: Vision-RAG QA, StockSee, and Exoplanet Explorer.">
+<meta name="twitter:image" content="https://sanj84-co.github.io/sanjaySportfolio/images/og-card.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Backend / AI Systems Engineer &mdash; Rutgers CS '28</div>
+    <h1>Sanjay<br>Senthilkumar</h1>
+    <p class="lede">I build things, then find out where they break. Every number below is one I measured myself, wrote down, and can defend cold.</p>
+    <div class="links">
+      <a href="mailto:Sansenus123@gmail.com">Email</a>
+      <a href="https://github.com/Sanj84-co">GitHub</a>
+      <a href="https://www.linkedin.com/in/sanjay-senthilkumar-804b8b27b/">LinkedIn</a>
+      <a href="resume.pdf">Resume</a>
+    </div>
+  </header>
+
+  <main>
+  <div class="status">
+    <div>cache <b>23.8ms&rarr;16.6ms</b></div>
+    <div>retrieval <b>17%&rarr;43%</b></div>
+    <div>throughput <b>1,534 req/s</b></div>
+    <div>alert accuracy <b>1/5&rarr;5/5</b></div>
+    <div>hit rate <b>95%</b></div>
+  </div>
+
+  <section id="projects">
+    <div class="section-head"><span class="tag">01</span><h2>Case Files</h2></div>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <div>
+          <h3 class="case-title">Vision-RAG QA</h3>
+          <div class="case-stack">ColQwen2 &middot; Qdrant &middot; Gemini &middot; LangGraph &middot; FastAPI</div>
+        </div>
+        <div class="case-links">
+          <a href="https://github.com/Sanj84-co/colpali-vision-rag">github &rarr;</a>
+          <a href="https://huggingface.co/spaces/Sanj23/Colpali-Vision-RAG">live &rarr;</a>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="field"><span class="k">Symptom</span><span class="v">Retrieval missed the correct page on a dense SEC filing &mdash; visually salient answers ranked below cluttered table pages.</span></div>
+        <div class="field"><span class="k">Diagnosis</span><span class="v">Raw similarity search alone wasn't enough; correct pages ranked 19th&ndash;39th of 58 on dense-table lookups.</span></div>
+        <div class="field"><span class="k">Fix</span><span class="v">Built a two-stage reranking pipeline. Also found and fixed two concurrency bugs (local-storage race, model-loading race) via load testing.</span></div>
+        <div class="field"><span class="k">Verified</span><span class="v"><span class="stamp">17% &rarr; 43% top-3 accuracy &middot; +26pp</span></span></div>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <div>
+          <h3 class="case-title">StockSee</h3>
+          <div class="case-stack">FastAPI &middot; PostgreSQL &middot; Redis &middot; JWT &middot; APScheduler</div>
+        </div>
+        <div class="case-links">
+          <a href="https://github.com/Sanj84-co/Stockproj">github &rarr;</a>
+          <a href="https://stockproj-production.up.railway.app">live &rarr;</a>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="field"><span class="k">Symptom</span><span class="v">Same-tick price alerts were only firing 1 out of 5 times &mdash; users would miss real threshold crossings.</span></div>
+        <div class="field"><span class="k">Diagnosis</span><span class="v">An early-return in the alert dispatcher was serializing what should've been simultaneous deliveries.</span></div>
+        <div class="field"><span class="k">Fix</span><span class="v">Root-caused and rewrote the dispatch path. Instrumented Redis with hit/miss counters and load-tested under JWT-authenticated concurrent traffic.</span></div>
+        <div class="field"><span class="k">Verified</span><span class="v"><span class="stamp">5/5 accuracy &middot; 95% hit rate &middot; 1,534 req/s</span></span></div>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <div>
+          <h3 class="case-title">Exoplanet Explorer</h3>
+          <div class="case-stack">FastAPI &middot; PostgreSQL &middot; React &middot; PySpark &middot; FAISS</div>
+        </div>
+        <div class="case-links">
+          <a href="https://github.com/Sanj84-co/exoplanets">github &rarr;</a>
+          <a href="https://gallant-tenderness-production-e795.up.railway.app">live &rarr;</a>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="field"><span class="k">Symptom</span><span class="v">Repeated NASA archive queries against 900+ exoplanets were slow and redundant.</span></div>
+        <div class="field"><span class="k">Diagnosis</span><span class="v">No caching layer; every request hit Postgres cold. Also wanted a distributed path for larger batch transforms.</span></div>
+        <div class="field"><span class="k">Fix</span><span class="v">Added a Redis cache-aside layer and a parallel PySpark/Databricks pipeline writing to Delta Lake. Built a from-scratch RAG pipeline over arXiv papers with an eval harness.</span></div>
+        <div class="field"><span class="k">Verified</span><span class="v"><span class="stamp">23.8ms &rarr; 16.6ms &middot; avg rank 1.07/25</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head"><span class="tag">02</span><h2>Experience</h2></div>
+
+    <div class="role reveal">
+      <div class="role-time">Jun 2026 &mdash; Present</div>
+      <div>
+        <h3 class="role-org">Virtusa</h3>
+        <div class="role-title">AI Engineer Intern &middot; Remote</div>
+        <ul>
+          <li>Built a self-healing RAG observability system using RAGAS metrics to detect data and concept drift against DuckDB baselines.</li>
+          <li>Automated corrective re-ingestion and re-ranking, escalating to engineers only after three failed retries.</li>
+          <li>Designed a 12-table schema with three-role RBAC and a 53-pair golden dataset for pre-production evaluation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role reveal">
+      <div class="role-time">Mar 2026 &mdash; Present</div>
+      <div>
+        <h3 class="role-org">BettrLabs</h3>
+        <div class="role-title">Software Engineer Intern &middot; Remote</div>
+        <ul>
+          <li>Engineered a Neo4j knowledge graph modeling brand identity across 10+ entity types and 6+ relationship types.</li>
+          <li>Built a graph-grounded RAG pipeline anchoring LLM responses in structured graph context.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role reveal">
+      <div class="role-time">Sep &mdash; Dec 2025</div>
+      <div>
+        <h3 class="role-org">RUMAD</h3>
+        <div class="role-title">Backend Engineering Fellow</div>
+        <ul>
+          <li>Built a RESTful backend with Express and Supabase, owning the data layer and auth for the mentorship platform.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="tag">03</span><h2>Stack</h2></div>
+    <div class="skill-grid">
+      <div class="k">Languages</div><div>Python, Java, JavaScript, TypeScript, C, SQL</div>
+      <div class="k">Frameworks</div><div>FastAPI, React, Node.js, Express, LangChain</div>
+      <div class="k">Data</div><div>PostgreSQL, Redis, Neo4j, FAISS, Pinecone, Spark, Databricks, Delta Lake</div>
+      <div class="k">AI / LLM</div><div>RAG pipelines, model evaluation (RAGAS), fine-tuning, quantization, PyTorch</div>
+      <div class="k">Cloud</div><div>AWS, Azure, GCP, Docker, CI/CD</div>
+    </div>
+  </section>
+  </main>
+
+  <footer>
+    New Brunswick, NJ &middot; Rutgers CS + Quant Econ, class of 2028 &middot; last updated Aug 2026
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
