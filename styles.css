@@ -146,6 +146,14 @@ h2{
   margin-left:12px;
 }
 .case-links a:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+.case-image{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1400/787;
+  object-fit:cover;
+  border-bottom:1px dashed var(--paper-line);
+}
 .case-body{padding:20px 22px 22px;display:grid;grid-template-columns:1fr 1fr;gap:0 26px;}
 .field{margin-bottom:14px;}
 .field .k{

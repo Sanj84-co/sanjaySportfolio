@@ -66,6 +66,7 @@
           <a href="https://huggingface.co/spaces/Sanj23/Colpali-Vision-RAG">live &rarr;</a>
         </div>
       </div>
+      <img class="case-image" src="images/vision-rag-qa/api-docs.jpg" alt="Vision-RAG QA's FastAPI Swagger documentation showing its query and ingest endpoints" width="1400" height="787" loading="lazy">
       <div class="case-body">
         <div class="field"><span class="k">Symptom</span><span class="v">Retrieval missed the correct page on a dense SEC filing &mdash; visually salient answers ranked below cluttered table pages.</span></div>
         <div class="field"><span class="k">Diagnosis</span><span class="v">Raw similarity search alone wasn't enough; correct pages ranked 19th&ndash;39th of 58 on dense-table lookups.</span></div>
@@ -85,6 +86,7 @@
           <a href="https://stockproj-production.up.railway.app">live &rarr;</a>
         </div>
       </div>
+      <img class="case-image" src="images/stocksee/api-docs.jpg" alt="StockSee's FastAPI Swagger documentation listing its REST endpoints, including watchlist, transactions, and alerts routes" width="1400" height="787" loading="lazy">
       <div class="case-body">
         <div class="field"><span class="k">Symptom</span><span class="v">Same-tick price alerts were only firing 1 out of 5 times &mdash; users would miss real threshold crossings.</span></div>
         <div class="field"><span class="k">Diagnosis</span><span class="v">An early-return in the alert dispatcher was serializing what should've been simultaneous deliveries.</span></div>
@@ -104,6 +106,7 @@
           <a href="https://gallant-tenderness-production-e795.up.railway.app">live &rarr;</a>
         </div>
       </div>
+      <img class="case-image" src="images/exoplanet-explorer/dashboard.jpg" alt="Exoplanet Atlas web app showing a grid of confirmed exoplanets, including Kepler-29 c and K2-214 b, each with distance in light-years and orbital period" width="1400" height="787" loading="lazy">
       <div class="case-body">
         <div class="field"><span class="k">Symptom</span><span class="v">Repeated NASA archive queries against 900+ exoplanets were slow and redundant.</span></div>
         <div class="field"><span class="k">Diagnosis</span><span class="v">No caching layer; every request hit Postgres cold. Also wanted a distributed path for larger batch transforms.</span></div>
